@@ -11,9 +11,9 @@
   "appId": "com.mezamagic.rasterizer",
   "productName": "Rasterizer",
   "publish": {
-    "provider": "github",
-    "owner": "joshuameza1",
-    "repo": "Rasterizer"
+   "provider": "github",
+   "owner": "joshuameza1",
+   "repo": "Rasterizer"
   },
   "mac": {
    "category": "public.app-category.graphics-design",
