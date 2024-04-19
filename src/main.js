@@ -1,4 +1,5 @@
-const { app, BrowserWindow, autoUpdater, dialog, ipcMain } = require('electron');
+const { app, BrowserWindow, dialog, ipcMain } = require('electron');
+const { autoUpdater } = require('electron-updater');
 const log = require('electron-log');
 const path = require('path');
 const url = require('url');
@@ -21,28 +22,32 @@ console.info = log.info;
 
 
 log.info('Application starting...');
-log.warn('This is a warning message');
-log.error('This is an error message');
 log.info('Logs are being stored in:', log.transports.file.getFile().path);
 
 
 // Setting autoUpdater's logging to use electron-log
+autoUpdater.autoDownload = true;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
 
-// Handling the 'update-downloaded' event
-autoUpdater.on('update-downloaded', (event, releaseNotesreleaseName) => {
-    const dialogOpts = {
-        type: 'info',
-        buttons: ['Restart', 'Later'],
-        title: 'Application Update',
-        message: process.platform === 'win32' ? releaseNotes : releaseName,
-        detail: 'A new version has been downloaded. Restart the application to apply the updates.'
-    };
-
-    dialog.showMessageBox(dialogOpts).then((returnValue) => {
-        if (returnValue.response === 0) autoUpdater.quitAndInstall();
-    });
+autoUpdater.on('checking-for-update', () => {
+    console.log('Checking for update...');
+});
+autoUpdater.on('update-available', (info) => {
+    console.log('Update available.', info);
+});
+autoUpdater.on('update-not-available', (info) => {
+    console.log('Update not available.', info);
+});
+autoUpdater.on('error', (err) => {
+    console.log('Error in auto-updater. ' + err);
+});
+autoUpdater.on('download-progress', (d) => {
+    console.log(`Downloaded ${d.percent}%`);
+});
+autoUpdater.on('update-downloaded', (info) => {
+    console.log('Update downloaded');
+    autoUpdater.quitAndInstall();  
 });
 
 function createWindow() {
