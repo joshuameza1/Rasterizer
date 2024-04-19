@@ -6,6 +6,10 @@ const path = require('path');
 const url = require('url');
 
 log.transports.file.level = 'info';
+console.log = log.log;
+log.transports.file.file = '/Users/joshuameza/Library/Logs/Rasterizer/rasterizer.log';
+
+
 autoUpdater.logger = log;
 
 
