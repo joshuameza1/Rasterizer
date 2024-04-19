@@ -1,6 +1,6 @@
 {
  "name": "rasterizer",
- "version": "0.0.7",
+ "version": "0.0.8",
  "description": "Image converter for Raster Layouts",
  "main": "src/main.js",
  "scripts": {
