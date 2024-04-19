@@ -1,9 +1,27 @@
 // main.js
 
-const { app, BrowserWindow, ipcMain } = require('electron');
-const { autoUpdater } = require('electron-updater');
+const { app, BrowserWindow, autoUpdater, ipcMain } = require('electron');
+const log = require('electron-log');
 const path = require('path');
 const url = require('url');
+
+log.transports.file.level = 'info';
+autoUpdater.logger = log;
+
+
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+  const dialogOpts = {
+    type: 'info',
+    buttons: ['Restart', 'Later'],
+    title: 'Application Update',
+    message: process.platform === 'win32' ? releaseNotes : releaseName,
+    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+  };
+
+  dialog.showMessageBox(dialogOpts).then((returnValue) => {
+    if (returnValue.response === 0) autoUpdater.quitAndInstall();
+  });
+});
 
 function createWindow() {
     let mainWindow = new BrowserWindow({width: 800, height: 600});
@@ -15,8 +33,9 @@ function createWindow() {
   }
   
   app.on('ready', () => {
-    createWindow();
-    autoUpdater.checkForUpdatesAndNotify();
+    if (process.env.NODE_ENV === 'production') {
+      autoUpdater.checkForUpdates();
+    }
   });
   
   app.on('window-all-closed', () => {
@@ -29,22 +48,4 @@ function createWindow() {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
     }
-  });
-  
-  autoUpdater.on('update-available', () => {
-    console.log('A new update is available');
-  });
-  
-  autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-    const dialogOpts = {
-      type: 'info',
-      buttons: ['Restart', 'Later'],
-      title: 'Application Update',
-      message: process.platform === 'win32' ? releaseNotes : releaseName,
-      detail: 'A new version has been downloaded. Restart the application to apply the updates.'
-    };
-  
-    dialog.showMessageBox(dialogOpts).then((returnValue) => {
-      if (returnValue.response === 0) autoUpdater.quitAndInstall();
-    });
   });

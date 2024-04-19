@@ -1,6 +1,6 @@
 {
- "name": "Rasterizer",
- "version": "0.0.2",
+ "name": "rasterizer",
+ "version": "0.0.5",
  "description": "Image converter for Raster Layouts",
  "main": "src/main.js",
  "scripts": {
@@ -9,6 +9,12 @@
  },
  "build": {
   "appId": "com.mezamagic.rasterizer",
+  "productName": "Rasterizer",
+  "publish": {
+    "provider": "github",
+    "owner": "joshuameza1",
+    "repo": "Rasterizer"
+  },
   "mac": {
    "category": "public.app-category.graphics-design",
    "target": [
@@ -27,15 +33,11 @@
     "width": 500,
     "height": 300
    }
-  },
-  "publish": {
-   "provider": "github",
-   "repo": "https://github.com/joshuameza1/Rasterizer",
-   "owner": "joshuameza1"
   }
  },
  "dependencies": {
   "@electron/asar": "^3.2.9",
+  "electron-log": "^5.1.2",
   "electron-updater": "^6.1.8"
  },
  "devDependencies": {
