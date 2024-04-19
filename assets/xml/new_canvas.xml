@@ -1,0 +1,25 @@
+<!-- new_canvas.xml -->
+<canvas>
+    <width>1920</width>
+    <height>1080</height>
+    <section>
+        <x>15</x>
+        <y>0</y>
+    </section>
+    <section>
+        <x>225</x>
+        <y>0</y>
+    </section>
+    <section>
+        <x>435</x>
+        <y>0</y>
+    </section>
+    <section>
+        <x>1485</x>
+        <y>0</y>
+    </section>
+    <section>
+        <x>1695</x>
+        <y>0</y>
+    </section>
+</canvas>

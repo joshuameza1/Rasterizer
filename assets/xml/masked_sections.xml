@@ -1,0 +1,33 @@
+<!-- masked_sections.xml -->
+<masked_sections>
+    <section>
+        <x>0</x>
+        <y>235</y>
+        <width>210</width>
+        <height>630</height>
+    </section>
+    <section>
+        <x>619</x>
+        <y>0</y>
+        <width>210</width>
+        <height>630</height>
+    </section>
+    <section>
+        <x>1312</x>
+        <y>0</y>
+        <width>1050</width>
+        <height>630</height>
+    </section>
+    <section>
+        <x>2845</x>
+        <y>0</y>
+        <width>210</width>
+        <height>630</height>
+    </section>
+    <section>
+        <x>3464</x>
+        <y>235</y>
+        <width>210</width>
+        <height>630</height>
+    </section>
+</masked_sections>

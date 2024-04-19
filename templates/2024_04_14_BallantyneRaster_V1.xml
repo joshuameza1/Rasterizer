@@ -1,0 +1,66 @@
+<!-- Template.xml -->
+<template>
+    <!-- Define masked sections -->
+    <maskedSections>
+        <section>
+            <x>0</x>
+            <y>235</y>
+            <width>210</width>
+            <height>630</height>
+        </section>
+        <section>
+            <x>619</x>
+            <y>0</y>
+            <width>210</width>
+            <height>630</height>
+        </section>
+        <section>
+            <x>1312</x>
+            <y>0</y>
+            <width>1050</width>
+            <height>630</height>
+        </section>
+        <section>
+            <x>2845</x>
+            <y>0</y>
+            <width>210</width>
+            <height>630</height>
+        </section>
+        <section>
+            <x>3464</x>
+            <y>235</y>
+            <width>210</width>
+            <height>630</height>
+        </section>
+        <!-- Add more masked sections as needed -->
+    </maskedSections>
+    
+    <!-- Define canvas dimensions and positions -->
+    <canvas>
+        <width>1920</width>
+        <height>1080</height>
+        <positions>
+            <position>
+                <x>15</x>
+                <y>0</y>
+            </position>
+            <position>
+                <x>225</x>
+                <y>0</y>
+            </position>
+            <position>
+                <x>435</x>
+                <y>0</y>
+            </position>
+            <position>
+                <x>1485</x>
+                <y>0</y>
+            </position>
+            <position>
+                <x>1695</x>
+                <y>0</y>
+            </position>
+            <!-- Add more positions as needed -->
+        </positions>
+    </canvas>
+</template>

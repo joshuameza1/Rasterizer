@@ -1,0 +1,45 @@
+{
+ "name": "your-app",
+ "version": "0.0.1",
+ "description": "Image converter for Raster Layouts",
+ "main": "src/main.js",
+ "scripts": {
+  "pack": "electron-builder --dir",
+  "dist": "electron-builder"
+ },
+ "build": {
+  "appId": "com.mezamagic.rasterizer",
+  "mac": {
+   "category": "public.app-category.graphics-design",
+   "target": [
+    "dmg",
+    "zip"
+   ],
+   "icon": "build/icons/icon.icns",
+   "darkModeSupport": true
+  },
+  "directories": {
+   "output": "dist",
+   "buildResources": "build"
+  },
+  "dmg": {
+   "window": {
+    "width": 500,
+    "height": 300
+   }
+  },
+  "publish": {
+   "provider": "github",
+   "repo": "https://github.com/joshuameza1/Rasterizer",
+   "owner": "joshuameza1"
+  }
+ },
+ "dependencies": {
+  "@electron/asar": "^3.2.9",
+  "electron-updater": "^6.1.8"
+ },
+ "devDependencies": {
+  "@electron/osx-sign": "^1.1.0",
+  "electron": "^30.0.1"
+ }
+}

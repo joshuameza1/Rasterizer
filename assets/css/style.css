@@ -1,0 +1,62 @@
+/* ../assets/css/style.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+#dropArea {
+    border: 2px solid #ccc; /* Add border around the drop area */
+    border-style: dashed;
+    padding: 20px; /* Padding inside the border */
+    margin: 20px; /* Margin around the drop area */
+    width: calc(100% - 88px); /* Width minus border width, padding, and margin */
+    height: calc(100% - 88px); /* Height minus border width, padding, and margin */
+    display: grid; /* Use CSS Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Grid layout with minimum column width of 150px */
+    gap: 20px; /* Margin between grid items */
+    justify-items: center; /* Center align grid items horizontally */
+    align-items: center; /* Center align grid items vertically */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+
+#dropArea p {
+    margin: 0; /* Remove default margin for <p> element */
+}
+
+#dropArea img {
+    max-width: 100%; /* Limit image width to fit within grid item */
+    max-height: 100%; /* Limit image height to fit within grid item */
+}
+
+@media screen and (max-width: 768px) {
+    /* Adjust grid layout for smaller screens */
+    #dropArea {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust column width for smaller screens */
+    }
+}
+
+/* Hide the settings panel by default */
+.hidden {
+    display: none;
+}
+
+/* Style the settings panel */
+#settingsPanel {
+    position: absolute;
+    top: 50px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999; /* Ensure it appears above other content */
+}
