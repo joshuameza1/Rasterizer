@@ -14,7 +14,7 @@
    "provider": "github",
    "owner": "joshuameza1",
    "repo": "Rasterizer",
-   "token": "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"
+   "token": "${GITHUB_TOKEN}"
   },
   "mac": {
    "category": "public.app-category.utilities",
