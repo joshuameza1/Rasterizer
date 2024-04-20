@@ -13,8 +13,7 @@
   "publish": {
    "provider": "github",
    "owner": "joshuameza1",
-   "repo": "Rasterizer",
-   "token": "${GITHUB_TOKEN}"
+   "repo": "Rasterizer"
   },
   "mac": {
    "category": "public.app-category.utilities",
