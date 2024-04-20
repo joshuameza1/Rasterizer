@@ -3,17 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drag and Drop v0.0.1</title>
-    <link rel="stylesheet" href="../assets/css/style.css"> <!-- Link to external stylesheet -->
+    <title>Drag and Drop v0.0.3</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     
+    <style>
+        #modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1001;
+        }
+
+        #modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #progress-bar {
+            width: 0%;  /* Initial width */
+            height: 20px;
+            background-color: #4CAF50;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
 </head>
 <body>
     <div id="dropArea">
         <p>Drag files here to rasterize.</p>
     </div>
-    <script src="renderer.js"></script>
-    <script src="jszip.min.js"></script> <!-- Include the JSZip library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
 
+    <div id="modal">
+        <div id="modal-content">
+            <h2>Update Available</h2>
+            <p>An update is ready to download. Would you like to update now?</p>
+            <button id="downloadBtn">Update Now</button>
+            <button onclick="document.getElementById('modal').style.display='none';">Later</button>
+            <div style="width: 100%; background-color: #ddd; margin-top: 10px;">
+                <div id="progress-bar"></div>  <!-- Progress bar container -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        ipcRenderer.on('update-available', () => {
+            document.getElementById('modal').style.display = 'block';
+        });
+
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            ipcRenderer.send('download-update');
+            document.getElementById('downloadBtn').style.display = 'none';  // Hide update button after clicked
+        });
+
+        ipcRenderer.on('download-progress', (event, progressPercent) => {
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = `${progressPercent}%`;  // Update the width of the progress bar
+            progressBar.textContent = `${Math.floor(progressPercent)}%`;  // Display percentage
+        });
+
+        ipcRenderer.on('update-downloaded', () => {
+            document.getElementById('modal-content').innerHTML = `
+                <h2>Update Downloaded</h2>
+                <p>The update has been downloaded and will be installed on restart.</p>
+                <button onclick="ipcRenderer.send('restart-app')">Restart Now</button>
+            `;
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
 </body>
 </html>

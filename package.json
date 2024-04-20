@@ -1,6 +1,6 @@
 {
  "name": "rasterizer",
- "version": "0.0.1",
+ "version": "v0.0.3",
  "description": "Image converter for Raster Layouts",
  "main": "src/main.js",
  "scripts": {
@@ -13,14 +13,13 @@
   "publish": {
    "provider": "github",
    "owner": "joshuameza1",
-   "repo": "Rasterizer"
+   "repo": "Rasterizer",
+   "token": "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"
   },
   "mac": {
-   "category": "public.app-category.graphics-design",
-   "target": [
-    "dmg",
-    "zip"
-   ],
+   "category": "public.app-category.utilities",
+   "target": "default",
+   "identity": "Josue Meza (UBBLPRR235)",
    "icon": "build/icons/icon.icns",
    "darkModeSupport": true
   },
