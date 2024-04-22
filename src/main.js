@@ -3,6 +3,12 @@ const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const log = require('electron-log');
 
+const { ipcMain } = require('electron');
+
+ipcMain.on('log', (event, message) => {
+    console.log(message); // This will log to the main process's console
+});
+
 log.transports.file.resolvePathFn = () => path.join(app.getPath('userData'), 'logs.txt');
 log.info('Application starting...');
 

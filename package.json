@@ -4,8 +4,9 @@
  "description": "Image converter for Raster Layouts",
  "main": "src/main.js",
  "scripts": {
+  "start": "electron .",
   "pack": "electron-builder --dir",
-  "dist": "electron-builder"
+  "dist": "electron-builder build --publish=always"
  },
  "build": {
   "appId": "com.mezamagic.rasterizer",
@@ -41,6 +42,8 @@
  },
  "devDependencies": {
   "@electron/osx-sign": "^1.1.0",
-  "electron": "^30.0.1"
+  "dotenv": "^16.4.5",
+  "electron": "^30.0.1",
+  "electron-builder": "^24.13.3"
  }
 }
